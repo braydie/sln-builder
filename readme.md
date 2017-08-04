@@ -4,7 +4,7 @@
 
 A lazy command line tool for building solutions.
 
-It will look for solution files (.sln) and compile them. If multiple .slns are found, you are prompted to pick one.
+It will look for solution files (.sln) recursively and compile them. If multiple .slns are found, you are prompted to pick one.
 
 **Currently only works with [2017 build tools (v15.0 of MSBuild)](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=15) on Windows.** 
 
@@ -16,7 +16,7 @@ npm install sln-builder -g
 
 ## Usage
 
-In a directory that has some .sln files:
+In a directory that has some .sln files - doesn't have to be top level:
 
 ```
 build
