@@ -1,4 +1,7 @@
 # sln-builder
+
+[![npm version](https://badge.fury.io/js/sln-builder.svg)](https://badge.fury.io/js/sln-builder) 
+
 A lazy command line tool for building solutions.
 
 It will look for solution files (.sln) and compile them. If multiple .slns are found, you are prompted to pick one.
