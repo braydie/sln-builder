@@ -20,5 +20,8 @@
   },
   "bin": {
     "build": "./index.js"
+  },
+  "repository" : {
+    "type" : "git", "url" : "https://github.com/braydie/sln-builder.git"
   }
 }
