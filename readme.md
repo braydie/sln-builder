@@ -25,7 +25,7 @@ build
 ### Examples
 
 ```
-build --configration Release --all
+build --configuration Release --all
 build -c Release -a
 ```
 
