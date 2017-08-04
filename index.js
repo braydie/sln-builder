@@ -8,7 +8,7 @@ var program = require('commander');
 var msbuild = new _msbuild();
 
 program
-    .version('0.0.4')
+    .version('0.0.5')
     .option('-c, --configuration <configurationProfile>', 'configuration. Defaults to \'Debug\'', 'Debug')
     .option('-a, --all', 'flag to indicate that all solutions found should be compiled', false)
     .parse(process.argv);
