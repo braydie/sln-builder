@@ -27,3 +27,12 @@ By default, solution will build in Debug, if you want to override:
 ```
 build Release
 ```
+
+### Custom sources
+
+If you specify an environment variable of `NUGET_SOURCES` listing your package sources - separated by `;`, then they will be included as package sources alongside nuget.orgs package feed. [See this StackOverflow answer on setting up environment variables](https://stackoverflow.com/a/13333312/4477493).
+
+```powershell
+$env:NUGET_SOURCES='https://mynugetfeed.com;https://anotherfeed.com'
+build
+```

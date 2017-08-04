@@ -43,12 +43,22 @@ files.then(function(files) {
 });
 
 function build(solution, configuration) {
+    function getSources() {
+        const NUGET_ORG = 'https://api.nuget.org/v3/index.json';
+        if(process.env.NUGET_SOURCES !== undefined) { 
+            var env_sources = process.env.NUGET_SOURCES.split(';');
+            env_sources.push(NUGET_ORG);
+            return env_sources;
+        }    
+        return [NUGET_ORG];        
+    }
     var nuget = Nuget({
         nugetPath: __dirname + './nuget.exe'
     });
 
     nuget.restore({
-        packages: solution
+        packages: solution,
+        source: getSources()
     }).then(function() {
         msbuild.getMSBuildPath = function(os, process, version) {
             return 'C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\BuildTools\\MSBuild\\15.0\\Bin\\MSBuild.exe';
@@ -58,17 +68,5 @@ function build(solution, configuration) {
         msbuild.configuration = configuration;
         msbuild.overrideParams.push('/p:Platform=Any CPU');
         msbuild.build();
-    });
-    // var nuget = execFile(__dirname + './nuget.exe', ['restore'], function(error, stdout, stderr){
-    //     console.log(stdout);
-    //     // override msbuild.getMSBuildPath() to find new location of MSBuild for VS 2017 onwards only
-    //     msbuild.getMSBuildPath = function(os, process, version) {
-    //         return 'C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\BuildTools\\MSBuild\\15.0\\Bin\\MSBuild.exe';
-    //     }
-    //     msbuild.version = '15.0';
-    //     msbuild.sourcePath = solution;
-    //     msbuild.configuration = configuration;
-    //     msbuild.overrideParams.push('/p:Platform=Any CPU');
-    //     msbuild.build();
-    // })    
+    });        
 }
