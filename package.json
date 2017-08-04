@@ -1,6 +1,6 @@
 {
   "name": "sln-builder",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Simple command line tool for building solutions (.sln) using MSBuild",
   "main": "index.js",
   "scripts": {
@@ -16,12 +16,14 @@
   "dependencies": {
     "filehound": "^1.16.2",
     "msbuild": "^1.0.1",
+    "nuget-runner": "^0.1.10",
     "readline-sync": "^1.4.7"
   },
   "bin": {
     "build": "./index.js"
   },
-  "repository" : {
-    "type" : "git", "url" : "https://github.com/braydie/sln-builder.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/braydie/sln-builder.git"
   }
 }

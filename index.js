@@ -2,6 +2,7 @@
 var _msbuild = require('msbuild');
 var filehound = require('filehound');
 var readline = require('readline-sync');
+var Nuget = require('nuget-runner');
 
 var msbuild = new _msbuild();
 
@@ -42,13 +43,32 @@ files.then(function(files) {
 });
 
 function build(solution, configuration) {
-    // override msbuild.getMSBuildPath() to find new location of MSBuild for VS 2017 onwards only
-    msbuild.getMSBuildPath = function(os, process, version) {
-        return 'C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\BuildTools\\MSBuild\\15.0\\Bin\\MSBuild.exe';
-    }
-    msbuild.version = '15.0';
-    msbuild.sourcePath = solution;
-    msbuild.configuration = configuration;
-    msbuild.overrideParams.push('/p:Platform=Any CPU');
-    msbuild.build();
+    var nuget = Nuget({
+        nugetPath: __dirname + './nuget.exe'
+    });
+
+    nuget.restore({
+        packages: solution
+    }).then(function() {
+        msbuild.getMSBuildPath = function(os, process, version) {
+            return 'C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\BuildTools\\MSBuild\\15.0\\Bin\\MSBuild.exe';
+        }
+        msbuild.version = '15.0';
+        msbuild.sourcePath = solution;
+        msbuild.configuration = configuration;
+        msbuild.overrideParams.push('/p:Platform=Any CPU');
+        msbuild.build();
+    });
+    // var nuget = execFile(__dirname + './nuget.exe', ['restore'], function(error, stdout, stderr){
+    //     console.log(stdout);
+    //     // override msbuild.getMSBuildPath() to find new location of MSBuild for VS 2017 onwards only
+    //     msbuild.getMSBuildPath = function(os, process, version) {
+    //         return 'C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\BuildTools\\MSBuild\\15.0\\Bin\\MSBuild.exe';
+    //     }
+    //     msbuild.version = '15.0';
+    //     msbuild.sourcePath = solution;
+    //     msbuild.configuration = configuration;
+    //     msbuild.overrideParams.push('/p:Platform=Any CPU');
+    //     msbuild.build();
+    // })    
 }
