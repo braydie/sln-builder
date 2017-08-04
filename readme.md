@@ -22,10 +22,25 @@ In a directory that has some .sln files:
 build
 ```
 
-By default, solution will build in Debug, if you want to override:
+### Examples
 
 ```
-build Release
+build --configration Release --all
+build -c Release -a
+```
+
+```
+build --all
+build -a
+```
+
+### Options
+
+```
+-V, --version                               output the version number
+-c, --configuration <configurationProfile>  configuration. Defaults to 'Debug'
+-a, --all                                   flag to indicate that all solutions found should be compiled
+-h, --help                                  output usage informationBy default, solution will build in Debug, if you want to override:
 ```
 
 ### Custom sources

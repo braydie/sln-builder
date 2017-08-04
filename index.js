@@ -3,32 +3,41 @@ var _msbuild = require('msbuild');
 var filehound = require('filehound');
 var readline = require('readline-sync');
 var Nuget = require('nuget-runner');
+var program = require('commander');
 
 var msbuild = new _msbuild();
+
+program
+    .version('0.0.4')
+    .option('-c, --configuration <configurationProfile>', 'configuration. Defaults to \'Debug\'', 'Debug')
+    .option('-a, --all', 'flag to indicate that all solutions found should be compiled', false)
+    .parse(process.argv);
 
 var files = filehound.create()
     .paths(process.cwd())
     .ext('sln')
     .find();
 
-files.then(function(files) {
-    var configuration = process.argv[2];
-    if(configuration === undefined) {
-        configuration = "Debug";
-    }
-    if(files.length === 0) {
-        console.log("No solutions found");
+files.then(function(files) {   
+    if (files.length === 0) {
+        console.log('No solutions found');
         return;
-    } else if(files.length === 1) {
-        build(files[0], configuration);
+    } else if (program.all) {
+        console.log('building *all* solutions found')
+        for(var i = 0; i < files.length; i++) {
+            build(files[i], program.configuration);            
+        }
+        return;    
+    } else if (files.length === 1) {
+        build(files[0], program.configuration);
     } else {
-        console.log("-----------");
-        console.log("found the following solutions:");
+        console.log('-----------');
+        console.log('found the following solutions:');
         for(var i = 0; i < files.length; i++) {
             console.log((i + 1) + " -- " + files[i]);
         }
-        console.log("----------");
-        console.log("");
+        console.log('----------');
+        console.log('');
 
         var response = readline.question('Which solution do you want to build? Enter the number or type \'abort\' to cancel:');
         if(response === 'abort') {
@@ -37,7 +46,7 @@ files.then(function(files) {
         }
 
         var solution = files[parseInt(response) - 1];
-        build(solution, configuration);
+        build(solution, program.configuration);
         return;
     }
 });

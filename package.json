@@ -14,6 +14,7 @@
   "author": "Braydie Grove",
   "license": "MIT",
   "dependencies": {
+    "commander": "^2.11.0",
     "filehound": "^1.16.2",
     "msbuild": "^1.0.1",
     "nuget-runner": "^0.1.10",
