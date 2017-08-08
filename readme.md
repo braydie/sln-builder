@@ -40,7 +40,7 @@ build -a
 -V, --version                               output the version number
 -c, --configuration <configurationProfile>  configuration. Defaults to 'Debug'
 -a, --all                                   flag to indicate that all solutions found should be compiled
--h, --help                                  output usage informationBy default, solution will build in Debug, if you want to override:
+-h, --help                                  output usage information
 ```
 
 ### Custom sources
