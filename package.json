@@ -1,6 +1,6 @@
 {
   "name": "sln-builder",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Simple command line tool for building solutions (.sln) using MSBuild",
   "main": "index.js",
   "scripts": {

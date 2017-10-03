@@ -8,8 +8,9 @@ var program = require('commander');
 var msbuild = new _msbuild();
 
 program
-    .version('0.0.5')
+    .version('0.0.6')
     .option('-c, --configuration <configurationProfile>', 'configuration. Defaults to \'Debug\'', 'Debug')
+    .option('-cl, --clean', 'Cleans solution before building', false)
     .option('-a, --all', 'flag to indicate that all solutions found should be compiled', false)
     .parse(process.argv);
 
@@ -76,6 +77,9 @@ function build(solution, configuration) {
         msbuild.sourcePath = solution;
         msbuild.configuration = configuration;
         msbuild.overrideParams.push('/p:Platform=Any CPU');
+        if(program.clean) { 
+            msbuild.overrideParams.push('/t:Clean,Build'); 
+        }
         msbuild.build();
     });        
 }
