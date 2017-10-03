@@ -10,7 +10,7 @@ var msbuild = new _msbuild();
 program
     .version('0.0.6')
     .option('-c, --configuration <configurationProfile>', 'configuration. Defaults to \'Debug\'', 'Debug')
-    .option('-cl, --clean', 'Cleans solution before building', false)
+    .option('-cl, --clean', 'cleans solution before building', false)
     .option('-a, --all', 'flag to indicate that all solutions found should be compiled', false)
     .parse(process.argv);
 

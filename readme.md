@@ -39,6 +39,7 @@ build -a
 ```
 -V, --version                               output the version number
 -c, --configuration <configurationProfile>  configuration. Defaults to 'Debug'
+-cl, --clean                                cleans solution before building
 -a, --all                                   flag to indicate that all solutions found should be compiled
 -h, --help                                  output usage information
 ```
