@@ -14,11 +14,11 @@
   "author": "Braydie Grove",
   "license": "MIT",
   "dependencies": {
-    "commander": "^2.11.0",
-    "filehound": "^1.16.2",
-    "msbuild": "^1.0.1",
+    "commander": "^2.15.1",
+    "filehound": "^1.16.3",
+    "msbuild": "^1.0.2",
     "nuget-runner": "^0.1.10",
-    "readline-sync": "^1.4.7"
+    "readline-sync": "^1.4.9"
   },
   "bin": {
     "build": "./index.js"
