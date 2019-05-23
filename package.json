@@ -6,7 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["msbuild", "solution", "sln"],
+  "keywords": [
+    "msbuild",
+    "solution",
+    "sln"
+  ],
   "author": "Braydie Grove",
   "license": "MIT",
   "dependencies": {
