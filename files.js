@@ -1,10 +1,9 @@
-const filehound = require('filehound');
+const filehound = require(`filehound`);
 
 module.exports = {
-  find: () =>
-    filehound
-      .create()
-      .paths(process.cwd())
-      .ext('sln')
-      .find(),
+  find: () => filehound
+    .create()
+    .paths(process.cwd())
+    .ext(`sln`)
+    .find(),
 };
