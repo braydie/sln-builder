@@ -1,6 +1,6 @@
 {
   "name": "sln-builder",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Simple command line tool for building solutions (.sln) using MSBuild",
   "main": "index.js",
   "scripts": {
@@ -15,6 +15,7 @@
   "license": "MIT",
   "dependencies": {
     "commander": "^2.15.1",
+    "dotenv": "^8.0.0",
     "filehound": "^1.16.3",
     "msbuild": "^1.0.2",
     "nuget-runner": "^0.1.10",
