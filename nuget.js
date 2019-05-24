@@ -1,5 +1,5 @@
-const Nuget = require('nuget-runner');
+const Nuget = require(`nuget-runner`);
 
 module.exports = Nuget({
-  nugetPath: __dirname + './nuget.exe',
+  nugetPath: `${__dirname}./nuget.exe`,
 });
