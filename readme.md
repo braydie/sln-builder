@@ -6,7 +6,7 @@ A lazy command line tool for building solutions.
 
 It will look for solution files (.sln) recursively and compile them. If multiple .slns are found, you are prompted to pick one.
 
-**Currently only works with [2017 build tools (v15.0 of MSBuild)](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=15) on Windows.** 
+You will need to configure your path to MSBuild.exe. By default, this package will look for it where VS 2019 has been installed.
 
 ## Install 
 
